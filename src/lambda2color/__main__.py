@@ -1,4 +1,7 @@
-"""The main entry point into this package when run as a script."""
+"""
+The main entry point into this package when run as a script.
+
+"""
 
 # For more details, see also
 # https://docs.python.org/3/library/runpy.html
@@ -6,12 +9,12 @@
 
 import sys
 
-from .something import Something
+from .lambda2color import Lambda2color
 
 
 def main() -> None:
     """Execute the Something standalone command-line tool."""
-    _ = Something.do_something()
+    _ = Lambda2color.main()
 
 
 if __name__ == "__main__":

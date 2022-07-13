@@ -1,4 +1,4 @@
-# Configuration file for the Sphinx documentation builder.
+lambda2color# Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath("../../src"))
 
 # -- Project information -----------------------------------------------------
 
-project = "Package"
-copyright = "2021, Package"
+project = "lambda2color"
+copyright = "2021, Laurent Perrinet"
 author = ""
 
 

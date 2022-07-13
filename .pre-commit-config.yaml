@@ -47,7 +47,7 @@ repos:
   hooks:
   - id: pyupgrade
     name: Upgrade code idioms
-    files: ^src/package/|^tests/
+    files: ^src/lambda2color/|^tests/
     args: [--py39-plus]
 
 # Similar to pylint, with a few more/different checks. For more available
@@ -57,7 +57,7 @@ repos:
   hooks:
   - id: flake8
     name: Check flake8 issues
-    files: ^src/package/|^tests/
+    files: ^src/lambda2color/|^tests/
     types: [text, python]
     additional_dependencies: [flake8-bugbear==22.4.25, flake8-builtins==1.5.3, flake8-comprehensions==3.10.0, flake8-docstrings==1.6.0, flake8-mutable==1.2.0, flake8-noqa==1.2.5, flake8-pytest-style==1.6.0, flake8-rst-docstrings==0.2.3, pep8-naming==0.12.1]
 
@@ -69,7 +69,7 @@ repos:
     name: Check lint
     entry: pylint
     language: python
-    files: ^src/package/|^tests/
+    files: ^src/lambda2color/|^tests/
     types: [text, python]
     args: [--rcfile, pyproject.toml]
 
@@ -80,7 +80,7 @@ repos:
     name: Check typing annotations
     entry: mypy
     language: python
-    files: ^src/package/|^tests/
+    files: ^src/lambda2color/|^tests/
     types: [text, python]
     args: [--config-file, pyproject.toml]
 
@@ -91,7 +91,7 @@ repos:
   - id: bandit
     name: Check for security issues
     args: [--configfile, pyproject.toml]
-    files: ^src/package/|^tests/
+    files: ^src/lambda2color/|^tests/
     types: [text, python]
     additional_dependencies: ['bandit[toml]']
 

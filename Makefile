@@ -116,15 +116,15 @@ test:
 ifeq ($(wildcard .venv/upgraded-on),)
   PACKAGE_VERSION=unknown
 else
-  PACKAGE_VERSION=$(shell python -c 'import package; print(package.__version__)')
+  PACKAGE_VERSION=$(shell python -c 'import lambda2color; print(lambda2color.__version__)')
 endif
-dist: dist/package-$(PACKAGE_VERSION)-py3-none-any.whl dist/package-$(PACKAGE_VERSION).tar.gz
-dist/package-$(PACKAGE_VERSION)-py3-none-any.whl: check test
+dist: dist/lambda2color-$(PACKAGE_VERSION)-py3-none-any.whl dist/package-$(PACKAGE_VERSION).tar.gz
+dist/lambda2color-$(PACKAGE_VERSION)-py3-none-any.whl: check test
 	if [ -z "${SOURCE_DATE_EPOCH}" ]; then \
 	  echo "SOURCE_DATE_EPOCH variable not specified, building non-reproducible wheel"; \
 	fi
 	flit build --setup-py --format wheel
-dist/package-$(PACKAGE_VERSION).tar.gz: check test
+dist/lambda2color-$(PACKAGE_VERSION).tar.gz: check test
 	if [ -z "${SOURCE_DATE_EPOCH}" ]; then \
 	  echo "SOURCE_DATE_EPOCH variable not specified, building non-reproducible sdist"; \
 	fi

@@ -1,10 +1,10 @@
 """The Something module provides some things and functions."""
 
 
-class Something:
+class Lambda2color:
     """The Something class provides some things."""
 
     @staticmethod
-    def do_something(value: bool = False) -> bool:
+    def main(value: bool = False) -> bool:
         """Return true, always."""
         return value or True
