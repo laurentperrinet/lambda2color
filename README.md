@@ -1,5 +1,13 @@
 ![license](https://img.shields.io/badge/license-MIT-blue) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-yellow?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![conventional-commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow)](https://www.conventionalcommits.org/en/v1.0.0/) [![black](https://img.shields.io/badge/code%20style-black-000000)](https://github.com/psf/black) [![mypy](https://img.shields.io/badge/mypy-checked-brightgreen)](http://mypy-lang.org/) [![pylint](https://img.shields.io/badge/pylint-required%2010.0-brightgreen)](http://pylint.org/) [![pytest](https://img.shields.io/badge/pytest-enabled-brightgreen)](https://github.com/pytest-dev/pytest) [![coverage](https://img.shields.io/badge/coverage-required%20100%25-brightgreen)](https://github.com/nedbat/coveragepy) [![hypothesis](https://img.shields.io/badge/hypothesis-tested-brightgreen.svg)](https://hypothesis.readthedocs.io/)
 
+
+# lambda2color
+
+This is a simple library to transform a given light wavelength into the corresponding RGB color.
+
+
+
+
 # Python Package Template
 
 This repository is intended to be a base template, a cookiecutter for a new Python package project while keeping [PEP518](https://www.python.org/dev/peps/pep-0518/) in mind. Because it’s hosted on Github it already utilizes a few [Github Actions](https://docs.github.com/en/actions) that enforce repository-side checks for continuous integration and that implement a semantic release setup. And while this package is a starting point for a Python project with good engineering practices, it’s intended to be improved and added to in various ways — see the [Wiki](https://github.com/jenstroeger/python-package-template/wiki) for more suggestions.
@@ -64,7 +72,7 @@ A _shared package_ or library is intended to be imported by another package or a
 
 **Shared package**: this template works out of the box as a shared package. Direct dependencies on other packages are declared in `pyproject.toml` (see the [`dependencies`](https://flit.pypa.io/en/latest/pyproject_toml.html#dependencies) field) and should allow for as wide a version range as possible to ensure that this package and its dependencies can be installed by and coexist with other packages and applications without version conflicts.
 
-**Application**: the [`__main__.py`](https://docs.python.org/3/library/__main__.html#main-py-in-python-packages) file ensures an entry point to run this package as a standalone application using Python’s [-m](https://docs.python.org/3/using/cmdline.html#cmdoption-m) command-line option. A wrapper script named `something` is also generated as an [entry point into this package](https://flit.pypa.io/en/latest/pyproject_toml.html#scripts-section) by `make setup` or `make upgrade`. In addition to specifying directly dependent packages and their version ranges in `pyproject.toml`, an application should _pin_ its entire environment using the [`requirements.txt`](https://pip.pypa.io/en/latest/user_guide/#requirements-files). Use the `make requirements` command to generate that file if you’re building an application.
+**Application**: the [`__main__.py`](https://docs.python.org/3/library/__main__.html#main-py-in-python-packages) file ensures an entry point to run this package as a standalone application using Python’s [-m](https://docs.python.org/3/using/cmdline.html#cmdoption-m) command-line option. A wrapper script named `Lambda2color` is also generated as an [entry point into this package](https://flit.pypa.io/en/latest/pyproject_toml.html#scripts-section) by `make setup` or `make upgrade`. In addition to specifying directly dependent packages and their version ranges in `pyproject.toml`, an application should _pin_ its entire environment using the [`requirements.txt`](https://pip.pypa.io/en/latest/user_guide/#requirements-files). Use the `make requirements` command to generate that file if you’re building an application.
 
 In the future, the generated `requirements.txt` file with its integrity hash for every dependent package will become an important provenance material to provide transparency in the packaging process (see also [SBOM + SLSA](https://slsa.dev/blog/2022/05/slsa-sbom)).
 

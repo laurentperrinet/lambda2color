@@ -11,7 +11,7 @@ maintainers = [{name = "Laurent Perrinet", email = "laurent.perrinet@univ-amu.fr
 dynamic = ["version", "description"]
 license = {file = "LICENSE.md"}
 readme = "README.md"
-dependencies = []
+dependencies = ['numpy']
 keywords = []
 # https://pypi.org/classifiers/
 classifiers = [
@@ -39,8 +39,8 @@ something = "lambda2color.__main__:main"
 dev = [
     "flit >=3.2.0,<4",
     "hashin ==0.17.0",
-    "mypy >=0.921,<=0.961",
-    "pylint >=2.9.3,<=2.14.4",
+    "mypy >=0.921",
+    "pylint >=2.9.3",
 ]
 docs = [
     "sphinx >=4.1.2,<=4.5.0",

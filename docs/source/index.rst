@@ -16,6 +16,9 @@ Package package
 Something
 =========
 
+This is a simple library to transform a given light wavelength into the corresponding RGB color.
+
+
 .. automodule:: package
    :members:
 

@@ -1,6 +1,6 @@
-"""An example package.
+"""Lambda2color.
 
-This package is an empty cookiecutter package example. Enjoy!
+This is a simple library to transform a given light wavelength into the corresponding RGB color.
 """
 
 # The version of this package. There's no comprehensive, official list of other

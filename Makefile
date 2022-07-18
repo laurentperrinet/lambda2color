@@ -74,7 +74,7 @@ upgrade: .venv/upgraded-on
 	python -m pip install --upgrade pip
 	python -m pip install --upgrade wheel
 	python -m pip install --upgrade --upgrade-strategy eager --editable .[hooks,dev,test,docs]
-	$(MAKE) upgrade-quiet
+	# $(MAKE) upgrade-quiet
 force-upgrade:
 	rm -f .venv/upgraded-on
 	$(MAKE) upgrade

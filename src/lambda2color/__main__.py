@@ -1,7 +1,4 @@
-"""
-The main entry point into this package when run as a script.
-
-"""
+"""The main entry point into this package when run as a script."""
 
 # For more details, see also
 # https://docs.python.org/3/library/runpy.html
@@ -13,7 +10,7 @@ from .lambda2color import Lambda2color
 
 
 def main() -> None:
-    """Execute the Something standalone command-line tool."""
+    """Execute the Lambda2color standalone command-line tool."""
     _ = Lambda2color.main()
 
 

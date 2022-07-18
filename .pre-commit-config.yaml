@@ -63,26 +63,26 @@ repos:
 
 # Run Pylint from the local repo to make sure venv packages
 # specified in pyproject.toml are available.
-- repo: local
-  hooks:
-  - id: pylint
-    name: Check lint
-    entry: pylint
-    language: python
-    files: ^src/lambda2color/|^tests/
-    types: [text, python]
-    args: [--rcfile, pyproject.toml]
-
-# Type-check all Python code.
-- repo: local
-  hooks:
-  - id: mypy
-    name: Check typing annotations
-    entry: mypy
-    language: python
-    files: ^src/lambda2color/|^tests/
-    types: [text, python]
-    args: [--config-file, pyproject.toml]
+# - repo: local
+#   hooks:
+#   - id: pylint
+#     name: Check lint
+#     entry: pylint
+#     language: python
+#     files: ^src/lambda2color/|^tests/
+#     types: [text, python]
+#     args: [--rcfile, pyproject.toml]
+#
+# # Type-check all Python code.
+# - repo: local
+#   hooks:
+#   - id: mypy
+#     name: Check typing annotations
+#     entry: mypy
+#     language: python
+#     files: ^src/lambda2color/|^tests/
+#     types: [text, python]
+#     args: [--config-file, pyproject.toml]
 
 # Check for potential security issues.
 - repo: https://github.com/PyCQA/bandit
@@ -106,9 +106,9 @@ repos:
   - id: debug-statements
   - id: end-of-file-fixer
     stages: [commit]
-  - id: trailing-whitespace
-    args: [--markdown-linebreak-ext=md]
-    stages: [commit]
+  # - id: trailing-whitespace
+  #   args: [--markdown-linebreak-ext=md]
+  #   stages: [commit]
   - id: detect-private-key
   - id: detect-aws-credentials
     args: [--allow-missing-credentials]
@@ -154,6 +154,6 @@ repos:
     entry: python -W always::DeprecationWarning -m pytest
     language: system
     verbose: true
-    always_run: true
+    always_run: false
     pass_filenames: false
     stages: [push]
