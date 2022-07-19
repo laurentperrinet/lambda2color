@@ -1,5 +1,5 @@
 ![license](https://img.shields.io/badge/license-MIT-blue) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laurentperrinet/lambda2color/main)
-[![PyPI version](https://badge.fury.io/py/LogGabor.svg)](https://badge.fury.io/py/LogGabor)
+[![PyPI version](https://badge.fury.io/py/lambda2color.svg)](https://badge.fury.io/py/lambda2color)
 
 
 # lambda2color: convert a given light wavelength into the corresponding RGB color
