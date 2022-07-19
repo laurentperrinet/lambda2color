@@ -8,10 +8,10 @@ This is a simple library to transform a given light wavelength into the correspo
 
 It is based on the different sensitivities to a novel color space called the [CIE 193 " XYZ" color space](https://en.wikipedia.org/wiki/CIE_1931_color_space) and defined by the CIE colour matching function for 380 - 780 nm in 5 nm intervals :
 
-![cmf.png](CIE colour matching function)
+![CIE colour matching function](cmf.png)
 
 This allows to simply compute for instance the color of different monochromatic lights:
 
-![spectrum.png](Rainbow)
+![Rainbow](spectrum.png)
 
 
