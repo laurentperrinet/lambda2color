@@ -1,10 +1,7 @@
-NAME = LogGabor
-VERSION=`python3 -c'import LogGabor; print(LogGabor.__version__)'`
+NAME = lambda2color
+VERSION=`python3 -c'import lambda2color; print(lambda2color.__version__)'`
 PYTHON = python3
 default: $(NAME).pdf
-
-edit:
-	mvim -p setup.py src/__init__.py src/$(NAME).py README.md Makefile requirements.txt
 
 pypi_all: pypi_tags pypi_upload
 # https://docs.python.org/2/distutils/packageindex.html
@@ -31,19 +28,12 @@ install_dev:
 todo:
 	grep -R * (^|#)[ ]*(TODO|FIXME|XXX|HINT|TIP)( |:)([^#]*)
 
-console:
-	open -a /Applications/Utilities/Console.app/ log-sparseedges-debug.log
 
 # macros for tests
 %.pdf: %.ipynb
 	jupyter nbconvert --SphinxTransformer.author='Laurent Perrinet (INT, UMR7289)' --to pdf $<
 
 # cleaning macros
-clean_tmp:
-	#find . -name .AppleDouble -type d -exec rm -fr {} \;
-	find .  -name *lock* -exec rm -fr {} \;
-	rm frioul.*
-	rm log-edge-debug.log
 
 clean:
 	rm -fr figures/* *.pyc *.py~ build dist

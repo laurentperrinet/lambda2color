@@ -2,23 +2,22 @@
 # -*- coding: utf8 -*-
 from setuptools import setup, find_packages
 
-NAME = "LogGabor"
-import LogGabor
-VERSION = LogGabor.__version__ # << to change in __init__.py
+NAME = "lambda2color"
+import lambda2color
+VERSION = lambda2color.__version__ # << to change in __init__.py
 
 setup(
     name = NAME,
     version = VERSION,
-    packages = find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages = find_packages(exclude=['contrib', 'docs']),
      author = "Laurent Perrinet INT - CNRS",
     author_email = "Laurent.Perrinet@univ-amu.fr",
-    description = "A log-Gabor pyramid is an oriented multiresolution scheme for images inspired by biology.",
+    description = "This is a simple library to transform a given light wavelength into the corresponding RGB color.",
     long_description=open("README.md", 'r', encoding='utf-8').read(),
     license = "GPLv2",
-    install_requires=['SLIP'],
+    install_requires=['numpy'],
     extras_require={
                 'html' : [
-                         'vispy',
                          'matplotlib'
                          'jupyter>=1.0']
     },
@@ -31,9 +30,7 @@ setup(
                    'Operating System :: POSIX',
                    'Topic :: Scientific/Engineering',
                    'Topic :: Utilities',
-                   'Programming Language :: Python :: 2',
-                   'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3',
-                   'Programming Language :: Python :: 3.5',
+                   'Programming Language :: Python :: 3.10',
                   ],
      )
