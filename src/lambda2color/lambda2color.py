@@ -25,11 +25,8 @@ class Lambda2color:
 
     """
 
-    # cmf is the CIE colour matching function for 380 - 780 nm in 5 nm intervals
-
     def __init__(
-        self, red: npt.ArrayLike, green: npt.ArrayLike, blue: npt.ArrayLike, white: npt.ArrayLike, cmf: npt.ArrayLike
-    ):
+        self, red: npt.ArrayLike, green: npt.ArrayLike, blue: npt.ArrayLike, white: npt.ArrayLike):
         """Initialise the ColourSystem object.
 
         Pass vectors (ie NumPy arrays of shape (3,)) for each of the
@@ -49,6 +46,8 @@ class Lambda2color:
         # xyz -> rgb transformation matrix
         self.transformation_matrix = self.inv_chromaticity_matrix / self.wscale[:, np.newaxis]
 
+
+        # the CIE colour matching function for 380 - 780 nm in 5 nm intervals
         cmf_str = """380 0.0014 0.0000 0.0065
         385 0.0022 0.0001 0.0105
         390 0.0042 0.0001 0.0201
@@ -145,7 +144,8 @@ class Lambda2color:
         Fractional rgb components are returned.
 
         """
-        rgb = self.transformation_matrix.dot(xyz)
+        # rgb = self.transformation_matrix.dot(xyz)
+        rgb = np.tensordot(xyz, self.transformation_matrix.T, axes=1)
 
         if np.any(rgb < 0):
             # We're not in the RGB gamut: approximate by desaturating
@@ -162,7 +162,7 @@ class Lambda2color:
         function, self.cmf: 380-780 nm in 5 nm steps.
 
         """
-        xyz = np.sum(spec[:, np.newaxis] * self.cmf, axis=0)
+        xyz = np.sum(spec[:, np.newaxis] * self.cmf[:, 1:], axis=0)
         den = np.sum(xyz)
         if den == 0.0:
             return xyz

@@ -6,7 +6,7 @@
 
 import sys
 
-from .lambda2color import Lambda2color
+from .lambda2color import Lambda2color, xyz_from_xy
 
 
 def main() -> None:
