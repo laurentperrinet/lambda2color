@@ -22,8 +22,8 @@ setup(
                          'jupyter>=1.0']
     },
     keywords = ('computational neuroscience', 'simulation', 'analysis', 'visualization', 'biologically-inspired', 'computer vision'),
-    url = 'https://github.com/bicv/' + NAME, # use the URL to the github repo
-    download_url = 'https://github.com/bicv/' + NAME + '/tarball/' + VERSION,
+    url = 'https://github.com/laurentperrinet/' + NAME, # use the URL to the github repo
+    download_url = 'https://github.com/laurentperrinet/' + NAME + '/tarball/' + VERSION,
     classifiers = ['Development Status :: 3 - Alpha',
                    'Environment :: Console',
                    'License :: OSI Approved :: GNU General Public License (GPL)',
