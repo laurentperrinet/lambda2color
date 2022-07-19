@@ -14,4 +14,4 @@ This allows to simply compute for instance the color of different monochromatic 
 
 ![Rainbow](spectrum.png)
 
-
+For more advanced uses, see for instance this blog post computing [the color of the sky](https://laurentperrinet.github.io/sciblog/posts/2020-07-04-colors-of-the-sky.html).
