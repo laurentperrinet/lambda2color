@@ -9,7 +9,7 @@ pypi_tags:
 	git commit -am' tagging for PyPI '
 	# in case you wish to delete tags, visit http://wptheming.com/2011/04/add-remove-github-tags/
 	git tag $(VERSION) -m "Adds a tag so that we can put this on PyPI."
-	git push --tags origin master
+	git push --tags origin main
 
 pypi_upload:
 	$(PYTHON) setup.py sdist #upload
