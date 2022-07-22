@@ -158,11 +158,14 @@ class Lambda2color:
     def spec_to_xyz(self, spec: Any) -> Any:
         """Convert a spectrum to an xyz point.
 
-        The spectrum *must* be on the same grid of points as the colour-matching
-        function, self.cmf: 380-780 nm in 5 nm steps.
+        The last dimension of the spectrum *must* be on the same grid of 
+        points as the colour-matching function self.cmf, that is,
+
+                    380-780 nm in 5 nm steps.
 
         """
-        xyz = np.sum(spec[:, np.newaxis] * self.cmf[:, 1:], axis=0)
+        # xyz = np.sum(spec[:, np.newaxis] * self.cmf[:, 1:], axis=0)
+        xyz = np.tensordot(spec, self.cmf[:, 1:], axes=1)
         den = np.sum(xyz)
         if den == 0.0:
             return xyz
@@ -171,8 +174,10 @@ class Lambda2color:
     def spec_to_rgb(self, spec: npt.ArrayLike) -> Any:
         """Convert a spectrum to an rgb value.
 
-        The spectrum *must* be on the same grid of points as the colour-matching
-        function, self.cmf: 380-780 nm in 5 nm steps.
+        The last dimension of the spectrum *must* be on the same grid of 
+        points as the colour-matching function self.cmf, that is,
+
+                    380-780 nm in 5 nm steps.
 
         """
         xyz = self.spec_to_xyz(spec)
