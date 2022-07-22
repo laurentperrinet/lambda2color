@@ -29,8 +29,6 @@ class Lambda2color:
     A colour system defined by the CIE x, y and z=1-x-y coordinates of
     its three primary illuminants and its "white point".
 
-    TODO: Implement gamma correction
-
     """
 
     def __init__(
@@ -53,7 +51,6 @@ class Lambda2color:
 
         # xyz -> rgb transformation matrix
         self.transformation_matrix = self.inv_chromaticity_matrix / self.wscale[:, np.newaxis]
-
 
         # the CIE colour matching function for 380 - 780 nm in 5 nm intervals
         cmf_str = """380 0.0014 0.0000 0.0065
@@ -191,13 +188,3 @@ class Lambda2color:
         xyz = self.spec_to_xyz(spec)
         return self.xyz_to_rgb(xyz)
 
-    @staticmethod
-    def main() -> np.ndarray:
-        """Comutes RGB for a standard white.
-
-        Returns cs_srgb.
-        """
-        # :
-        illuminant_d65 = xyz_from_xy(0.3127, 0.3291)
-
-        return illuminant_d65
