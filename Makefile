@@ -1,6 +1,6 @@
 NAME = lambda2color
-VERSION=`python3 -c'import lambda2color; print(lambda2color.__version__)'`
-PYTHON = python3
+PYTHON = python
+VERSION=`python -c'import lambda2color; print(lambda2color.__version__)'`
 default: $(NAME).pdf
 
 pypi_all: pypi_tags pypi_upload
@@ -24,7 +24,7 @@ pypi_docs:
 	open https://pypi.python.org/pypi?action=pkg_edit&name=$NAME
 
 install_dev:
-	pip3 uninstall -y $(NAME) ; pip3 install -e .
+	pip uninstall -y $(NAME) ; pip3 install -e .
 todo:
 	grep -R * (^|#)[ ]*(TODO|FIXME|XXX|HINT|TIP)( |:)([^#]*)
 
