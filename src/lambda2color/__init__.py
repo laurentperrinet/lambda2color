@@ -1,4 +1,4 @@
-"""Lambda2color 
+"""Lambda2color
 
 This is a simple library to transform a given light wavelength into the corresponding RGB color.
 
@@ -10,7 +10,7 @@ such that we may obtain a RGB value fro a given wavelength
 # The version of this package. There's no comprehensive, official list of other
 # magic constants, so we stick with this one only for now. See also this conversation:
 # https://stackoverflow.com/questions/38344848/is-there-a-comprehensive-table-of-pythons-magic-constants
-__version__ = "0.6"
+__version__ = "0.7"
 
 from typing import Any
 
@@ -163,7 +163,7 @@ class Lambda2color:
     def spec_to_xyz(self, spec: Any) -> Any:
         """Convert a spectrum to an xyz point.
 
-        The last dimension of the spectrum *must* be on the same grid of 
+        The last dimension of the spectrum *must* be on the same grid of
         points as the colour-matching function self.cmf, that is,
 
                     380-780 nm in 5 nm steps.
@@ -179,7 +179,7 @@ class Lambda2color:
     def spec_to_rgb(self, spec: npt.ArrayLike) -> Any:
         """Convert a spectrum to an rgb value.
 
-        The last dimension of the spectrum *must* be on the same grid of 
+        The last dimension of the spectrum *must* be on the same grid of
         points as the colour-matching function self.cmf, that is,
 
                     380-780 nm in 5 nm steps.
@@ -187,4 +187,3 @@ class Lambda2color:
         """
         xyz = self.spec_to_xyz(spec)
         return self.xyz_to_rgb(xyz)
-

@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 NAME = "lambda2color"
 # import lambda2color
 # VERSION = lambda2color.__version__ # << to change in __init__.py
-VERSION = "0.6"
+VERSION = "0.7"
 
 setup(
     name = NAME,
