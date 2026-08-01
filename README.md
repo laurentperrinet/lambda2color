@@ -1,17 +1,51 @@
-![license](https://img.shields.io/badge/license-MIT-blue) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laurentperrinet/lambda2color/main)
+![license](https://img.shields.io/badge/license-MIT-blue)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/laurentperrinet/lambda2color/main)
 [![PyPI version](https://badge.fury.io/py/lambda2color.svg)](https://badge.fury.io/py/lambda2color)
 
+# lambda2color: Wavelength-to-RGB Conversion
 
-# lambda2color: convert a given light wavelength into the corresponding RGB color
+A lightweight Python library to convert light wavelengths (in nanometers) into corresponding RGB colors using the CIE 1931 XYZ color space.
 
-This is a simple library to transform a given light wavelength into the corresponding RGB color.
+## Features
+- Convert wavelengths (380–780 nm) to RGB values.
+- Based on the CIE 1931 color matching functions.
+- Supports custom illuminants and color spaces.
 
-It is based on the different sensitivities to a novel color space called the [CIE 193 " XYZ" color space](https://en.wikipedia.org/wiki/CIE_1931_color_space) and defined by the CIE colour matching function for 380 - 780 nm in 5 nm intervals :
+## Installation
+```bash
+pip install lambda2color
+```
 
+## Usage
+```python
+from lambda2color import Lambda2color, xyz_from_xy
+
+# Define a standard white illuminant (D65)
+illuminant_D65 = xyz_from_xy(0.3127, 0.3291)
+
+# Initialize color space conversion for sRGB
+cs_srgb = Lambda2color(
+    red=xyz_from_xy(0.64, 0.33),
+    green=xyz_from_xy(0.30, 0.60),
+    blue=xyz_from_xy(0.15, 0.06),
+    white=illuminant_D65
+)
+
+# Convert wavelengths to RGB
+for spec, color in [(445, 'blue'), (555, 'green'), (600, 'red')]:
+    print(f'RGB for {color} ({spec} nm) is {cs_srgb.spec_to_rgb(spec)}')
+```
+
+## Documentation
+- [Full documentation](./README.ipynb)
+- [CIE 1931 XYZ color space](https://en.wikipedia.org/wiki/CIE_1931_color_space)
+
+## Visualizations
+### CIE Color Matching Functions
 ![CIE colour matching function](cmf.png)
 
-This allows to simply compute for instance the color of different monochromatic lights:
-
+### Spectral Colors
 ![Rainbow](spectrum.png)
 
-For more advanced uses, see for instance this blog post computing [the color of the sky](https://laurentperrinet.github.io/sciblog/posts/2020-07-04-colors-of-the-sky.html).
+## Advanced Use Cases
+- [Computing the color of the sky](https://laurentperrinet.github.io/sciblog/posts/2020-07-04-colors-of-the-sky.html)
