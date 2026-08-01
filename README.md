@@ -32,9 +32,18 @@ cs_srgb = Lambda2color(
 )
 
 # Convert wavelengths to RGB
+wavelengths = cs_srgb.cmf[1:, 0]
+N_wavelengths = len(wavelengths)
+hues = np.zeros((N_wavelengths, 3))
+for i_wavelength in range(N_wavelengths):
+    spec = np.zeros((N_wavelengths+1))
+    spec[i_wavelength] = 1
+    hues[i_wavelength, :] = cs_srgb.spec_to_rgb(spec)
+
+# give for S, M and L cones' peak sensitivities
 for spec, color in [(445, 'blue'), (555, 'green'), (600, 'red')]:
-    print(f'RGB for {color} ({spec} nm) is {cs_srgb.spec_to_rgb(spec)}')
-```
+  i_wavelength = np.argmin(np.abs(wavelengths - spec))
+  print(f' RGB for the {color=} at wavelength {wavelengths[i_wavelength]} nm: {hues[i_wavelength, :]}')```
 
 ## Documentation
 - [Full documentation](./README.ipynb)
