@@ -1,6 +1,6 @@
 NAME = lambda2color
 PYTHON = python
-VERSION=`python -c'import lambda2color; print(lambda2color.__version__)'`
+VERSION=$(shell PYTHONPATH=src $(PYTHON) -c 'import lambda2color; print(lambda2color.__version__)')
 default: $(NAME).pdf
 
 pypi_all: pypi_tags pypi_upload
@@ -12,7 +12,7 @@ pypi_tags:
 	git push --tags origin main
 
 pypi_upload:
-	$(PYTHON) setup.py sdist #upload
+	$(PYTHON) -m build
 	twine upload dist/*
 
 pypi_docs:
@@ -24,10 +24,13 @@ pypi_docs:
 	open https://pypi.python.org/pypi?action=pkg_edit&name=$NAME
 
 install_dev:
-	pip uninstall -y $(NAME) ; pip3 install -e .
+	$(PYTHON) -m pip uninstall -y $(NAME) ; $(PYTHON) -m pip install -e .
+
+venv:
+	$(PYTHON) -m venv .venv
+
 todo:
 	grep -R * (^|#)[ ]*(TODO|FIXME|XXX|HINT|TIP)( |:)([^#]*)
-
 
 # macros for tests
 %.pdf: %.ipynb

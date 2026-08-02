@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lambda2color"
+version = "0.8"
+authors = [
+  { name="Laurent Perrinet INT - CNRS", email="Laurent.Perrinet@univ-amu.fr" },
+]
+description = "This is a simple library to transform a given light wavelength into the corresponding RGB color."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPLv2" }
+keywords = ["computational neuroscience", "simulation", "analysis", "visualization", "biologically-inspired", "computer vision"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Operating System :: POSIX",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "numpy",
+]
+
+[project.optional-dependencies]
+html = [
+    "matplotlib",
+    "jupyter>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/laurentperrinet/lambda2color"
+
+[tool.setuptools.packages.find]
+where = ["src"]
