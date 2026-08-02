@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lambda2color"
-version = "0.8.1"
+version = "0.8.2"
 authors = [
   { name="Laurent Perrinet INT - CNRS", email="Laurent.Perrinet@univ-amu.fr" },
 ]
