@@ -16,13 +16,12 @@ keywords = ["computational neuroscience", "simulation", "analysis", "visualizati
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
-    "License :: OSI Approved :: GNU General Public License (GPL)",
     "Operating System :: POSIX",
     "Topic :: Scientific/Engineering",
     "Topic :: Utilities",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
-]
+  ]
 dependencies = [
     "numpy",
 ]

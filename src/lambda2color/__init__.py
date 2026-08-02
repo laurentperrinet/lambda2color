@@ -20,6 +20,21 @@ def xyz_from_xy(x_value: float, y_value: float) -> np.ndarray:
     """Return the vector (x, y, 1-x-y)."""
     return np.array((x_value, y_value, 1 - x_value - y_value))
 
+
+def rgb_to_luminance(rgb):
+    """Convert RGB (0-1) to relative luminance (0-1) using WCAG formula.
+
+    Args:
+        rgb: array-like of (R, G, B) values in range [0, 1].
+
+    Returns:
+        float: Relative luminance in range [0, 1].
+    """
+    # rgb = np.asarray(rgb, dtype=np.float32) / 255.0
+    mask = rgb <= 0.03928
+    rgb = np.where(mask, rgb / 12.92, ((rgb + 0.055) / 1.055) ** 2.4)
+    return np.dot(rgb, np.array([0.2126, 0.7152, 0.0722])).astype(np.float32)
+
 class Lambda2color:
     """A class representing a colour system.
 
