@@ -13,7 +13,7 @@ pypi_tags:
 
 pypi_upload:
 	$(PYTHON) -m build
-	twine upload dist/*
+	$(PYTHON) -m twine upload dist/*
 
 pypi_docs:
 	#rm web.zip
