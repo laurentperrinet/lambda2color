@@ -1,3 +1,5 @@
 numpy
 matplotlib
 jupyter>=1.0
+twine
+build
