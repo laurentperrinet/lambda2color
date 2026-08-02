@@ -16,12 +16,9 @@ from typing import Any
 
 import numpy as np
 import numpy.typing as npt
-
-
 def xyz_from_xy(x_value: float, y_value: float) -> np.ndarray:
     """Return the vector (x, y, 1-x-y)."""
     return np.array((x_value, y_value, 1 - x_value - y_value))
-
 
 class Lambda2color:
     """A class representing a colour system.
@@ -32,7 +29,7 @@ class Lambda2color:
     """
 
     def __init__(
-        self, red: npt.ArrayLike, green: npt.ArrayLike, blue: npt.ArrayLike, white: npt.ArrayLike):
+        self, red: np.ndarray, green: np.ndarray, blue: np.ndarray, white: np.ndarray):
         """Initialise the ColourSystem object.
 
         Pass vectors (ie NumPy arrays of shape (3,)) for each of the
@@ -139,7 +136,7 @@ class Lambda2color:
             cmf[i, :] = np.fromstring(line, sep=" ")
         self.cmf = cmf
 
-    def xyz_to_rgb(self, xyz: npt.ArrayLike) -> Any:
+    def xyz_to_rgb(self, xyz: np.ndarray) -> np.ndarray:
         """Transform from xyz to rgb representation of colour.
 
         The output rgb components are normalized on their maximum
@@ -149,7 +146,6 @@ class Lambda2color:
         Fractional rgb components are returned.
 
         """
-        # rgb = self.transformation_matrix.dot(xyz)
         rgb = np.tensordot(xyz, self.transformation_matrix.T, axes=1)
 
         if np.any(rgb < 0):
@@ -160,7 +156,7 @@ class Lambda2color:
             rgb /= np.max(rgb)
         return rgb
 
-    def spec_to_xyz(self, spec: Any) -> Any:
+    def spec_to_xyz(self, spec) -> np.ndarray:
         """Convert a spectrum to an xyz point.
 
         The last dimension of the spectrum *must* be on the same grid of
@@ -169,14 +165,24 @@ class Lambda2color:
                     380-780 nm in 5 nm steps.
 
         """
-        # xyz = np.sum(spec[:, np.newaxis] * self.cmf[:, 1:], axis=0)
+        if np.isscalar(spec):
+            # Handle single wavelength input by creating a one-hot spectrum
+            spec_array = np.zeros(len(self.cmf))
+            idx = np.where(self.cmf[:, 0] == spec)[0]
+            if idx.size > 0:
+                spec_array[idx[0]] = 1.0
+            else:
+                # Wavelength not found in the 5nm grid, return zeros
+                return np.zeros(3)
+            spec = spec_array
+
         xyz = np.tensordot(spec, self.cmf[:, 1:], axes=1)
         den = np.sum(xyz)
         if den == 0.0:
             return xyz
         return xyz / den
 
-    def spec_to_rgb(self, spec: npt.ArrayLike) -> Any:
+    def spec_to_rgb(self, spec) -> np.ndarray:
         """Convert a spectrum to an rgb value.
 
         The last dimension of the spectrum *must* be on the same grid of
